@@ -1,20 +1,39 @@
 #include <string>
 #include <vector>
+#include <stdio.h>
 
 class Solution {
 public:
     std::string longestCommonPrefix(std::vector<std::string>& strs)
     {
-        std::string solution = "";
-        if (!strs.empty() && !strs[0].empty())
-        {
-            solution = strs[0];
-        }
+        if (strs.empty())
+            return "";
         
-        for (const std::string& str : strs)
+        std::string solution = strs[0];
+        
+        for (std::string str : strs)
         {
+            if (solution == "")
+            {
+                return "";
+            }
+            
+            if (str.size() < solution.size())
+            {
+                int count = solution.size() - str.size();
+                for (size_t i = 0; i < count; i++)
+                {
+                    solution.pop_back();
+                }
+            }
+            
             for (size_t i = 0; i < str.size(); i++)
             {
+                if (solution == "")
+                {
+                    return "";
+                }
+
                 if (solution[i] != str[i])
                 {
                     int count = solution.size() - i;
@@ -22,13 +41,11 @@ public:
                     {
                         solution.pop_back();
                     }
-                    return solution;
+                    break;
                 }
-                
             }
-            
         }
-        return "";
+        return solution;
     }
 };
 
@@ -38,5 +55,5 @@ int main()
     strs.insert(strs.end(), {"flower","flow","flight"});
 
     Solution s;
-    s.longestCommonPrefix(strs);
+    printf("%s", s.longestCommonPrefix(strs).c_str());
 }
