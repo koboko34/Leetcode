@@ -399,3 +399,9 @@ FodyWeavers.xsd
 *.sln.iml
 
 *.exe
+
+/.metadata/
+.classpath
+.project
+*.class
+*.prefs
