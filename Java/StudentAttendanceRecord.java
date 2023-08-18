@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class StudentAttendanceRecord {
 
 	public static void main(String[] args) {
