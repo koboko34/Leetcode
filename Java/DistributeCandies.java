@@ -3,7 +3,8 @@ import java.util.HashSet;
 public class DistributeCandies {
 
 	public static void main(String[] args) {
-
+		int[] nums = new int[] { 1, 1, 2, 2, 3, 4 };
+		distributeCandies(nums);
 	}
 
 	public static int distributeCandies(int[] candyType) {
