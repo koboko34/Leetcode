@@ -15,8 +15,16 @@ public class GuessNumberHigherOrLower {
 	 */
 
 	public class Solution extends GuessGame {
-	    public int guessNumber(int n) {
-	        int left = 1;
+	    
+		public Solution(int number) {
+			super(number);
+		}
+
+		public int guessNumber(int n) {
+	        // time complexity: O(log n)
+			// space complexity: O(1)
+			
+			int left = 1;
 	        int right = n;
 	        int mid;
 	        
@@ -34,6 +42,8 @@ public class GuessNumberHigherOrLower {
 	        
 	        return -1;
 	    }
+	    
+	    
 	}
 
 }
