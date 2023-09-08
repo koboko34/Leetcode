@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class MinimumDepthOfBinaryTree {
@@ -12,12 +13,10 @@ public class MinimumDepthOfBinaryTree {
 		
 		if (root == null)
 			return 0;
-		
-		int depth = 1;
-		
-		Deque<TreeNode> queue = new Deque<>();
+				
+		Deque<TreeNode> queue = new ArrayDeque<>();
 		queue.add(root);
-		Deque<Integer> level = new Deque<>();
+		Deque<Integer> level = new ArrayDeque<>();
 		level.add(1);
 		
 		while (!queue.isEmpty()) {
@@ -37,5 +36,7 @@ public class MinimumDepthOfBinaryTree {
 			
 			level.pop();
 		}
+		
+		return -1;
 	}
 }
