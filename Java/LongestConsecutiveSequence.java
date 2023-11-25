@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LongestConsecutiveSequence {
@@ -10,8 +11,11 @@ public class LongestConsecutiveSequence {
 		longestConsecutive(nums);
 	}
 
-	public static int longestConsecutive(int[] nums) {
-        if (nums == null || nums.length == 0)
+	public static int longestConsecutiveSorted(int[] nums) {
+        // time complexity: O(n log n) due to sorting
+		// space complexity: O(n)
+		
+		if (nums == null || nums.length == 0)
         	return 0;
         
         List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
@@ -39,4 +43,30 @@ public class LongestConsecutiveSequence {
         
         return longest;
     }
+	
+	public static int longestConsecutive(int[] nums) {
+		// time complexity: O(n)
+		// space complexity: O(n)
+		
+		if (nums == null || nums.length == 0)
+			return 0;
+		
+		int longest = 1;
+		int length = 1;
+		Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+		
+		for (Integer i : set) {
+			if (set.contains(i - 1))
+				continue;
+			
+			length = 1;
+			while (set.contains(i + length)) {
+				length++;
+				longest = Math.max(longest, length);
+			}
+			
+		}
+		
+		return longest;
+	}
 }
